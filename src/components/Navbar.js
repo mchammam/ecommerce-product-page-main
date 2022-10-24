@@ -26,7 +26,7 @@ function Navbar() {
 
                 <img src={Logo} className="navbar__logo" alt="Logo" />
 
-                <div className={"menu " + (menuOpen && ("menu--open"))}>
+                <div className={"menu " + (menuOpen ? "menu--open" : "")}>
                     <button className="menu__close" onClick={toggleMenuOpen}><img src={IconClose} alt="Close" /></button>
                     <ul className="menu__list">
                         <a href="#" className="menu__link"><li className="menu__item">Collections</li></a>

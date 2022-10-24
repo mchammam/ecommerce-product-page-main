@@ -1,15 +1,17 @@
+import { useState} from 'react';
 import IconPlus from '../img/icon-plus.svg';
 import IconMinus from '../img/icon-minus.svg';
-import IconCart from '../img/icon-cart.svg';
 
 function AddToCart() {
+    const [quantity, setQuantity] = useState(3);
+
     return (
         <>
             <div className="add-to-cart">
                 <div className="add-to-cart__input-container">
-                    <button><img src={IconMinus} alt="Minus icon" /></button>
-                    <input className="add-to-cart__input" type="number" value="0" />
-                    <button><img src={IconPlus} alt="Plus icon" /></button>
+                    <button onClick={() => {setQuantity((quantity > 0) ? (quantity - 1) : quantity)}}><img src={IconMinus} alt="Minus icon" /></button>
+                    <input className="add-to-cart__input" type="number" value={quantity} />
+                    <button onClick={() => {setQuantity(quantity + 1)}}><img src={IconPlus} alt="Plus icon" /></button>
                 </div>
 
                 <button className="add-to-cart__btn">
