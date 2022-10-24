@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Cart from './Cart';
 
 import Logo from '../img/logo.svg'
 import IconClose from '../img/icon-close.svg'
@@ -8,9 +9,14 @@ import ImgAvatar from '../img/image-avatar.png'
 
 function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [cartOpen, setCartOpen] = useState(false);
 
     function toggleMenuOpen() {
         setMenuOpen(!menuOpen);
+    };
+
+    function toggleCartOpen() {
+        setCartOpen(!cartOpen);
     };
 
     return (
@@ -20,7 +26,7 @@ function Navbar() {
 
                 <img src={Logo} className="navbar__logo" alt="Logo" />
 
-                <div className={"menu " + (menuOpen ? "menu--open" : "")}>
+                <div className={"menu " + (menuOpen && ("menu--open"))}>
                     <button className="menu__close" onClick={toggleMenuOpen}><img src={IconClose} alt="Close" /></button>
                     <ul className="menu__list">
                         <a href="#" className="menu__link"><li className="menu__item">Collections</li></a>
@@ -31,10 +37,11 @@ function Navbar() {
                     </ul>
                 </div>
 
-                <button className="navbar__cart_btn" >
+                <button className="navbar__cart_btn" onClick={toggleCartOpen} >
                     <img src={IconCart} alt="Cart" />
                     <div className="navbar__cart_badge">3</div>
                 </button>
+                <Cart open={cartOpen} />
 
                 <img src={ImgAvatar} className="navbar__avatar" alt="Avatar image" />
             </div>

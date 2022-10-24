@@ -1,9 +1,9 @@
 import CartItem from './CartItem';
 
-function Cart() {
+function Cart({open}) {
     return (
         <>
-            <div className="cart">
+            <div className={"cart " + (open ? "cart--open" : "")}>
                 <h3 className="cart__title">Cart</h3>
                 
                 <CartItem />
