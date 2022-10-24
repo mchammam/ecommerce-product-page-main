@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import Logo from '../img/logo.svg'
 import IconClose from '../img/icon-close.svg'
 import IconMenu from '../img/icon-menu.svg'
@@ -5,15 +7,21 @@ import IconCart from '../img/icon-cart.svg';
 import ImgAvatar from '../img/image-avatar.png'
 
 function Navbar() {
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    function toggleMenuOpen() {
+        setMenuOpen(!menuOpen);
+    };
+
     return (
         <>
             <div className="navbar">
-                <button className="navbar__menu_btn" ><img src={IconMenu} alt="Menu" /></button>
+                <button className="navbar__menu_btn" onClick={toggleMenuOpen}><img src={IconMenu} alt="Menu" /></button>
 
                 <img src={Logo} className="navbar__logo" alt="Logo" />
 
-                <div className="menu">
-                    <button className="menu__close" ><img src={IconClose} alt="Close" /></button>
+                <div className={"menu " + (menuOpen ? "menu--open" : "")}>
+                    <button className="menu__close" onClick={toggleMenuOpen}><img src={IconClose} alt="Close" /></button>
                     <ul className="menu__list">
                         <a href="#" className="menu__link"><li className="menu__item">Collections</li></a>
                         <a href="#" className="menu__link"><li className="menu__item">Men</li></a>

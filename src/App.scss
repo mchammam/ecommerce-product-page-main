@@ -67,7 +67,6 @@ body {
 }
 
 .menu {
-    display: none;
     position: fixed;
     z-index: 999;
     top: 0;
@@ -77,7 +76,14 @@ body {
     min-width: 10rem;
     height: 100vh;
     background-color: white;
-    box-shadow: 0 0 0 31vw rgba(#000, 0.75);
+    translate: -100%;
+    transition: translate 1s, box-shadow 1s;
+
+    &--open {
+        box-shadow: 0 0 0 31vw rgba(#000, 0.75);
+        translate: 0;
+        transition: translate 0.5s, box-shadow 1s;
+    }
 
     &__close {
         padding: 0;
