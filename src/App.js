@@ -1,7 +1,7 @@
 import Navbar from './components/Navbar';
 import Cart from './components/Cart';
 import Articles from './components/Articles';
-import './App.css';
+import './App.scss';
 
 function App() {
   return (

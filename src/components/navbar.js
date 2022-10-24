@@ -23,7 +23,7 @@ function Navbar() {
                     </ul>
                 </div>
 
-                <button className="navbar__cart" >
+                <button className="navbar__cart_btn" >
                     <img src={IconCart} alt="Cart" />
                     <div className="navbar__cart_badge">3</div>
                 </button>
