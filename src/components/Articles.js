@@ -1,9 +1,12 @@
+import articleItems from '../data/articles.json';
 import Article from './Article';
 
 function Articles() {
     return (
         <>
-        <Article />
+            {articleItems.map((articleData) => (
+                <Article articleData={articleData} />
+            ))}
         </>
     )
 }
