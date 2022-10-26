@@ -1,16 +1,13 @@
+import ImageSlider from './ImageSlider';
 import AddToCart from './AddToCart';
-import IconPrevious from '../img/icon-previous.svg';
-import IconNext from '../img/icon-next.svg';
+
 
 function Article({ articleData }) {
+
     return (
         <>
             <div className="article">
-                <div className="article__img_container">
-                    <button className="article__arrow article__arrow--left"><img className="article__arrow-icon" src={IconPrevious} alt="Previous image" /></button>
-                    <img className="article__img" src={articleData.images[0].image} alt="" />
-                    <button className="article__arrow article__arrow--right"><img className="article__arrow-icon" src={IconNext} alt="Next image" /></button>
-                </div>
+                <ImageSlider images={articleData.images} />
 
                 <div className="article__body">
                     <h4 className="article__brand">{articleData.brand}</h4>

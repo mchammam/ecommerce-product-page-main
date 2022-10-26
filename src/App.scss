@@ -109,7 +109,7 @@ body {
 }
 
 .cart {
-    visibility: hidden; 
+    visibility: hidden;
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -129,7 +129,6 @@ body {
         visibility: visible;
         opacity: 1;
         transition: opacity 0.5s, visibility 0.5s;
-
     }
 
     &__title {
@@ -185,7 +184,6 @@ body {
         font-weight: 700;
         color: hsl(220, 13%, 13%);
     }
-
 }
 
 .article {
@@ -193,48 +191,6 @@ body {
         margin-top: 2.5rem;
         border-top: 1px solid hsl(220deg, 14%, 75%);
         box-shadow: 0px 0px 30px 3px hsl(220deg 14% 75%);
-    }
-
-    &__img_container {
-        position: relative;
-        display: flex;
-        max-height: 19rem;
-        overflow: hidden;
-    }
-
-    &__img {
-        width: 100vw;
-        //height: auto !important;
-        object-fit: cover;
-    }
-
-    &__arrow {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        top: 50%;
-        translate: 0 calc(-50% - 1rem);
-        margin: 1rem;
-        width: 2.4rem;
-        height: 2.4rem;
-        padding: 0;
-        background-color: white;
-        border: 0;
-        border-radius: 100%;
-    }
-
-    &__arrow--left {
-        padding-right: 0.2rem;
-    }
-
-    &__arrow--right {
-        right: 0;
-        padding-left: 0.2rem;
-    }
-
-    &__arrow-icon {
-        height: 0.8rem;
     }
 
     &__body {
@@ -280,6 +236,56 @@ body {
         font-size: 1rem;
         text-decoration: line-through;
         color: hsl(220, 14%, 75%);
+    }
+}
+
+.image-slider {
+    position: relative;
+    display: flex;
+    max-height: 19rem;
+    overflow: hidden;
+
+    &__img {
+        z-index: -1;
+        width: 100vw;
+        object-fit: cover;
+        transition: translate 1s;
+    }
+
+    &__arrow {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 50%;
+        translate: 0 calc(-50% - 1rem);
+        margin: 1rem;
+        width: 2.4rem;
+        height: 2.4rem;
+        padding: 0;
+        background-color: white;
+        border: 0;
+        border-radius: 100%;
+        transition: opacity 1s;
+    }
+
+    &__arrow[disabled] {
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 1s, visibility 1s;
+    }
+
+    &__arrow--left {
+        padding-right: 0.2rem;
+    }
+
+    &__arrow--right {
+        right: 0;
+        padding-left: 0.2rem;
+    }
+
+    &__arrow-icon {
+        height: 0.8rem;
     }
 }
 

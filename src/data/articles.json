@@ -8,19 +8,19 @@
 
         "images": [
             {
-                "image": "img/image-product-1.jpg",
+                "imageURL": "img/image-product-1.jpg",
                 "thumbnail": "img/image-product-1-thumbnail.jpg"
             },
             {
-                "image": "img/image-product-2.jpg",
+                "imageURL": "img/image-product-2.jpg",
                 "thumbnail": "img/image-product-2-thumbnail.jpg"
             },
             {
-                "image": "img/image-product-3.jpg",
+                "imageURL": "img/image-product-3.jpg",
                 "thumbnail": "img/image-product-3-thumbnail.jpg"
             },
             {
-                "image": "img/image-product-4.jpg",
+                "imageURL": "img/image-product-4.jpg",
                 "thumbnail": "img/image-product-4-thumbnail.jpg"
             }
         ]
@@ -34,17 +34,16 @@
         "originalPrice": 250.00,
 
         "images": [
-
             {
-                "image": "img/image-product-2.jpg",
+                "imageURL": "img/image-product-2.jpg",
                 "thumbnail": "img/image-product-2-thumbnail.jpg"
             },
             {
-                "image": "img/image-product-3.jpg",
+                "imageURL": "img/image-product-3.jpg",
                 "thumbnail": "img/image-product-3-thumbnail.jpg"
             },
             {
-                "image": "img/image-product-4.jpg",
+                "imageURL": "img/image-product-4.jpg",
                 "thumbnail": "img/image-product-4-thumbnail.jpg"
             }
         ]
