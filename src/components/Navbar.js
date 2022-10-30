@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { CartContext } from '../context/CartContext';
 import Cart from './Cart';
 
 import Logo from '../img/logo.svg'
@@ -8,6 +9,7 @@ import IconCart from '../img/icon-cart.svg';
 import ImgAvatar from '../img/image-avatar.png'
 
 function Navbar() {
+    const { totalCartItems } = useContext(CartContext);
     const [menuOpen, setMenuOpen] = useState(false);
     const [cartOpen, setCartOpen] = useState(false);
 
@@ -18,6 +20,7 @@ function Navbar() {
     function toggleCartOpen() {
         setCartOpen(!cartOpen);
     };
+
 
     return (
         <>
@@ -39,7 +42,7 @@ function Navbar() {
 
                 <button className="navbar__cart_btn" onClick={toggleCartOpen} >
                     <img src={IconCart} alt="Cart" />
-                    <div className="navbar__cart_badge">3</div>
+                    <div className="navbar__cart_badge">{totalCartItems()}</div>
                 </button>
                 <Cart open={cartOpen} />
 

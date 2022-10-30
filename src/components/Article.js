@@ -19,7 +19,7 @@ function Article({ articleData }) {
                         <span className="article__original-price">{articleData.originalPrice} SEK</span>
                     </p>
 
-                    <AddToCart />
+                    <AddToCart articleData={articleData} />
                 </div>
             </div>
         </>

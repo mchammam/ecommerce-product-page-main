@@ -139,7 +139,6 @@ body {
     }
 
     &__empty-msg {
-        display: none;
         margin: auto;
         font-weight: 700;
         text-align: center;
@@ -147,7 +146,14 @@ body {
     }
 
     &__btn {
-        display: none;
+        margin: 0 1.5rem 1.6rem 1.5rem;
+        padding: 1.2rem;
+        border: 0;
+        border-radius: 0.6rem;
+        background-color: hsl(26, 100%, 55%);
+        font-size: 1rem;
+        font-weight: 700;
+        color: hsl(25, 100%, 94%);
     }
 }
 
@@ -183,6 +189,11 @@ body {
     &__total {
         font-weight: 700;
         color: hsl(220, 13%, 13%);
+    }
+
+    &__delete-btn {
+        border: 0;
+        background-color: transparent;
     }
 }
 
