@@ -12,9 +12,9 @@ function AddToCart({ articleData }) {
         <>
             <div className="add-to-cart">
                 <div className="add-to-cart__input-container">
-                    <button onClick={() => { setQuantity((quantity > 1) ? (quantity - 1) : quantity) }}><img src={IconMinus} alt="Minus icon" /></button>
+                    <button className="add-to-cart__input-btn" onClick={() => { setQuantity((quantity > 1) ? (quantity - 1) : quantity) }}><img src={IconMinus} alt="Minus icon" /></button>
                     <input className="add-to-cart__input" type="number" value={quantity} />
-                    <button onClick={() => { setQuantity(quantity + 1) }}><img src={IconPlus} alt="Plus icon" /></button>
+                    <button  className="add-to-cart__input-btn" onClick={() => { setQuantity(quantity + 1) }}><img src={IconPlus} alt="Plus icon" /></button>
                 </div>
 
                 <button className="add-to-cart__btn" onClick={() => (addToCart({ ...item, quantity: quantity }))}>

@@ -49,30 +49,39 @@ function ImageSlider({ images }) {
     return (
         <>
             <div className="image-slider">
+                <div className="image-slider__image-container">
+                    {images.map((image, i) => (
+                        <img
+                            ref={(element) => (
+                                articleImages.current[i] = element
+                            )}
+                            className="image-slider__img"
+                            src={image.imageURL}
+                            alt="Article image" />
+                    ))}
 
-                {images.map((image, i) => (
-                    <img
-                        ref={(element) => (
-                            articleImages.current[i] = element
-                        )}
-                        className="image-slider__img"
-                        src={image.imageURL}
-                        alt="Article image" />
-                ))}
+                    <button
+                        className="image-slider__arrow image-slider__arrow--left"
+                        onClick={previousImage}
+                        disabled={previousImageButtonDisabled}>
+                        <img className="image-slider__arrow-icon" src={IconPrevious} alt="Previous image" />
+                    </button>
 
-                <button
-                    className="image-slider__arrow image-slider__arrow--left"
-                    onClick={previousImage}
-                    disabled={previousImageButtonDisabled}>
-                    <img className="image-slider__arrow-icon" src={IconPrevious} alt="Previous image" />
-                </button>
+                    <button
+                        className="image-slider__arrow image-slider__arrow--right"
+                        onClick={nextImage}
+                        disabled={nextImageButtonDisabled}>
+                        <img className="image-slider__arrow-icon" src={IconNext} alt="Next image" />
+                    </button>
+                </div>
 
-                <button
-                    className="image-slider__arrow image-slider__arrow--right"
-                    onClick={nextImage}
-                    disabled={nextImageButtonDisabled}>
-                    <img className="image-slider__arrow-icon" src={IconNext} alt="Next image" />
-                </button>
+                <div className="image-slider__thumbnails">
+                    {images.map((image) => (
+                        <img className="image-slider__thumbnail"
+                            src={image.thumbnail}
+                            alt="Thumbnail" />
+                    ))}
+                </div>
 
             </div>
         </>

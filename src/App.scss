@@ -22,22 +22,42 @@ body {
 }
 
 .navbar {
+    position: relative;
     display: flex;
     gap: 1rem;
     align-items: center;
-    padding: 1rem 1.4rem;
+    margin: 0 auto;
+    //padding: 0 1.4rem;
     height: 4.25rem;
+    max-width: 71rem;
+    border-bottom: 1px solid hsl(223, 64%, 98%);
     background-color: white;
+
+    @media screen and (min-width: 768px) {
+        margin: 0 1.4rem;
+        height: 7rem;
+    }
+    @media screen and (min-width: 74rem) {
+        margin: 0 auto;
+    }
 
     &__menu_btn {
         display: flex;
         align-items: center;
         border: 0;
         background-color: transparent;
+
+        @media screen and (min-width: 768px) {
+            display: none;
+        }
     }
 
     &__logo {
         margin-right: auto;
+
+        @media screen and (min-width: 768px) {
+            margin-right: 1rem;
+        }
     }
 
     &__cart_btn {
@@ -46,6 +66,18 @@ body {
         padding: 0;
         border: 0;
         background-color: transparent;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &:hover > img {
+            filter: brightness(0);
+        }
+
+        @media only screen and (min-width: 768px) {
+            margin-right: 2.2rem;
+        }
     }
 
     &__cart_badge {
@@ -57,12 +89,27 @@ body {
         background-color: hsl(26, 100%, 55%);
         color: white;
         font-size: 0.6rem;
-        //font-weight: 700;
+
+        &--hidden {
+            display: none;
+        }
     }
 
     &__avatar {
         height: 1.5rem;
         width: 1.5rem;
+
+        @media only screen and (min-width: 768px) {
+            border: 3px solid transparent;
+            height: 2.9rem;
+            width: 2.9rem;
+
+            &:hover {
+                border-radius: 100%;
+                border: 3px solid hsl(26, 100%, 55%);
+                cursor: pointer;
+            }
+        }
     }
 }
 
@@ -79,6 +126,18 @@ body {
     translate: -100%;
     transition: translate 1s, box-shadow 1s;
 
+    @media only screen and (min-width: 768px) {
+        position: relative;
+        margin-right: auto;
+        padding: 0 1.5rem;
+        height: 100%;
+        width: auto;
+        min-width: none;
+        background-color: transparent;
+        box-shadow: none !important;
+        translate: 0;
+    }
+
     &--open {
         box-shadow: 0 0 0 31vw rgba(#000, 0.75);
         translate: 0;
@@ -89,22 +148,50 @@ body {
         padding: 0;
         background-color: transparent;
         border: 0;
+
+        @media only screen and (min-width: 768px) {
+            display: none;
+        }
     }
 
     &__list {
         margin-top: 3.2rem;
         padding: 0;
+
+        @media only screen and (min-width: 768px) {
+            display: flex;
+            gap: 2rem;
+            margin: auto 0;
+            height: 100%;
+        }
     }
 
     &__item {
         margin-bottom: 1.75rem;
         list-style: none;
+
+        @media only screen and (min-width: 768px) {
+            margin-bottom: 0;
+        }
     }
 
     &__link {
         color: hsl(220, 13%, 13%);
         font-weight: 700;
         text-decoration: none;
+
+        @media only screen and (min-width: 768px) {
+            display: flex;
+            align-items: center;
+            border-bottom: 3px solid transparent;
+            color: hsl(219, 9%, 45%);
+            font-weight: 400;
+
+            &:hover {
+                border-bottom: 3px solid hsl(26, 100%, 55%);
+                color: hsl(220, 13%, 13%);
+            }
+        }
     }
 }
 
@@ -118,12 +205,17 @@ body {
     z-index: 500;
     margin: 0.5rem;
     width: calc(100% - 1rem);
+    max-width: 25rem;
     min-height: 16rem;
     background-color: white;
     border-radius: 0.7rem;
     box-shadow: 0 25px 35px -35px;
     opacity: 0;
     transition: opacity 1s, visibility 1s;
+
+    @media only screen and (min-width: 768px) {
+        box-shadow: 0 17px 41px -20px;
+    }
 
     &--open {
         visibility: visible;
@@ -154,6 +246,11 @@ body {
         font-size: 1rem;
         font-weight: 700;
         color: hsl(25, 100%, 94%);
+
+        &:hover {
+            opacity: 0.65;
+            cursor: pointer;
+        }
     }
 }
 
@@ -194,18 +291,54 @@ body {
     &__delete-btn {
         border: 0;
         background-color: transparent;
+
+        &:hover {
+            cursor: pointer;
+        }
     }
 }
 
 .article {
+    @media screen and (min-width: 768px) {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        margin: 5.6rem auto 0 auto;
+        padding: 0 1.4rem;
+        max-width: 65rem;
+    }
+
+    @media only screen and (min-width: 992px) {
+        gap: 7rem;
+    }
+
     & + .article {
         margin-top: 2.5rem;
-        border-top: 1px solid hsl(220deg, 14%, 75%);
+        border-top: 1px solid hsl(223, 64%, 98%);
         box-shadow: 0px 0px 30px 3px hsl(220deg 14% 75%);
+
+        @media screen and (min-width: 768px) {
+            margin-top: 5rem;
+            padding-top: 5rem;
+            box-shadow: none;
+        }
+    }
+
+    &:last-child {
+        margin-bottom: 2.5rem;
+
+        @media screen and (min-width: 768px) {
+            margin-bottom: 5rem;
+        }
     }
 
     &__body {
         padding: 1.3rem;
+
+        @media screen and (min-width: 768px) {
+            padding: 0 0 0 1.3rem;
+            width: 50%;
+        }
     }
 
     &__brand {
@@ -218,6 +351,11 @@ body {
     &__title {
         margin: 0.9rem 0;
         font-size: 1.8rem;
+
+        @media screen and (min-width: 768px) {
+            margin: 0.9rem 0 2rem 0;
+            font-size: 2.8rem;
+        }
     }
 
     &__description {
@@ -227,6 +365,7 @@ body {
 
     &__price {
         display: flex;
+        flex-wrap: wrap;
         margin: 2rem 0 1.5rem 0;
         align-items: center;
         font-size: 1.7rem;
@@ -247,20 +386,45 @@ body {
         font-size: 1rem;
         text-decoration: line-through;
         color: hsl(220, 14%, 75%);
+
+        @media screen and (min-width: 768px) {
+            width: 100%;
+            margin-top: 0.7rem;
+        }
     }
 }
 
 .image-slider {
-    position: relative;
     display: flex;
-    max-height: 19rem;
+    flex-direction: column;
+    gap: 2rem;
     overflow: hidden;
+
+    @media screen and (min-width: 768px) {
+        width: 50%;
+        max-height: none;
+    }
+
+    &__image-container {
+        position: relative;
+        display: flex;
+        max-height: 19rem;
+
+        @media screen and (min-width: 768px) {
+            max-height: none;
+        }
+    }
 
     &__img {
         z-index: -1;
         width: 100vw;
         object-fit: cover;
         transition: translate 1s;
+
+        @media screen and (min-width: 768px) {
+            border-radius: 1rem;
+            width: 100%;
+        }
     }
 
     &__arrow {
@@ -278,6 +442,10 @@ body {
         border: 0;
         border-radius: 100%;
         transition: opacity 1s;
+
+        @media screen and (min-width: 768px) {
+            display: none;
+        }
     }
 
     &__arrow[disabled] {
@@ -298,18 +466,71 @@ body {
     &__arrow-icon {
         height: 0.8rem;
     }
+
+    &__thumbnails {
+        display: none;
+
+        @media screen and (min-width: 768px) {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    }
+
+    &__thumbnail {
+        border-radius: 0.7rem;
+        height: 4.7rem;
+        width: 4.7rem;
+
+        &:hover {
+            opacity: 0.65;
+            cursor: pointer;
+        }
+
+        @media only screen and (min-width: 992px) {
+            height: 5.7rem;
+            width: 5.7rem;
+        }
+    }
 }
 
 .add-to-cart {
+    @media screen and (min-width: 768px) {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2.5rem;
+    }
+
     &__input-container {
         display: flex;
         background-color: hsl(223, 64%, 98%);
         border-radius: 0.7rem;
 
+        @media screen and (min-width: 768px) {
+            width: 35%;
+        }
+
         & * {
-            padding: 0.65rem;
             background-color: transparent;
             border: 0;
+        }
+
+        &:first-child {
+            //padding-left: 0.65rem;
+        }
+
+        &:last-child {
+            //padding-right: 0.65rem;
+        }
+    }
+
+    &__input-btn {
+        padding: 0 0.65rem;
+
+        &:hover {
+            opacity: 0.65;
+            cursor: pointer;
         }
     }
 
@@ -334,6 +555,16 @@ body {
         font-weight: 700;
         color: hsl(223, 64%, 98%);
         box-shadow: 0 11px 45px -18px hsl(26, 100%, 55%);
+
+        &:hover {
+            opacity: 0.65;
+            cursor: pointer;
+        }
+
+        @media screen and (min-width: 768px) {
+            margin: 0;
+            width: 65%;
+        }
     }
 
     &__icon {
