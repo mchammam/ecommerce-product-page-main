@@ -1,93 +1,107 @@
-import { useRef, useState, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import IconPrevious from '../img/icon-previous.svg';
 import IconNext from '../img/icon-next.svg';
+import IconClose from '../img/icon-close.svg';
 
 function ImageSlider({ images }) {
-    const articleImages = useRef([]);
     const [activeImage, setActiveImage] = useState(0);
     const [nextImageButtonDisabled, setNextImageButtonDisabled] = useState(true);
     const [previousImageButtonDisabled, setPreviousImageButtonDisabled] = useState(true);
+    const [lightboxVisible, setLightboxVisible] = useState(false);
 
-    //If there is more than one pic enable next btn
-    useEffect(() => {
-        if (images.length > 1) {
+    function nextImage(event) {
+        setActiveImage((currActiveImage) => (
+            currActiveImage + 1
+        ))
+        event.stopPropagation();
+    }
+
+    function previousImage(event) {
+        setActiveImage((currActiveImage) => (
+            currActiveImage - 1
+        ))
+        event.stopPropagation();
+    }
+
+    function changeActiveImage(event, i) {
+        setActiveImage(i)
+        event.stopPropagation();
+    }
+
+    function closeLightbox(event) {
+        setLightboxVisible(false)
+        event.stopPropagation();
+    }
+    function openLightbox(event) {
+        setLightboxVisible(true);
+        event.stopPropagation();
+    }
+
+    useMemo(() => {
+        if (activeImage === 0) {
+            setPreviousImageButtonDisabled(true)
+        } else {
+            setPreviousImageButtonDisabled(false)
+        }
+
+        if ((images.length - 1) === activeImage) {
+            setNextImageButtonDisabled(true)
+        } else {
             setNextImageButtonDisabled(false)
         }
-    }, [])
 
-    function nextImage() {
-        articleImages.current.map((image) => {
-            const imageTranslateProp = parseFloat(image.style.translate) || 0;
-            image.style.translate = (imageTranslateProp - 100) + "%"
-        });
-
-        setPreviousImageButtonDisabled(false);
-
-        //Disable next button if you are showing the last image
-        const firstImage = articleImages.current[0];
-        const firstImageTranslateProp = parseFloat(firstImage.style.translate);
-        if (firstImageTranslateProp === ((articleImages.current.length - 1) * (-100))) {
-            setNextImageButtonDisabled(true);
-        }
-    }
-
-    function previousImage() {
-        //setActiveImage((prevActiveImage) => (prevActiveImage - 1));
-        
-        articleImages.current.map((image) => {
-            const imageTranslateProp = parseFloat(image.style.translate) || 0;
-            image.style.translate = (imageTranslateProp + 100) + "%"
-        });
-
-        setNextImageButtonDisabled(false);
-
-        //Disable previous button if you are showing the first image
-        const firstImage = articleImages.current[0];
-        const firstImageTranslateProp = parseFloat(firstImage.style.translate);
-        if (firstImageTranslateProp === 0) {
-            setPreviousImageButtonDisabled(true);
-        }
-    }
+    }, [activeImage])
 
     return (
         <>
-            <div className="image-slider">
-                <div className="image-slider__image-container">
-                    {images.map((image, i) => (
-                        <img
-                            ref={(element) => (
-                                articleImages.current[i] = element
-                            )}
-                            className="image-slider__img"
-                            style={{translate: (activeImage * (-100)) + "%"}}
-                            src={image.imageURL}
-                            alt="Article image" />
-                    ))}
+            <div className={"image-slider "}>
+                <div className={((lightboxVisible) ? "lightbox" : "")} onClick={closeLightbox}>
+                    <div className="image-slider__btn-container">
 
-                    <button
-                        className="image-slider__arrow image-slider__arrow--left"
-                        onClick={previousImage}
-                        disabled={previousImageButtonDisabled}>
-                        <img className="image-slider__arrow-icon" src={IconPrevious} alt="Previous image" />
-                    </button>
+                        <button
+                            className="image-slider__close"
+                            onClick={closeLightbox}>
+                            <img className="image-slider__close-icon" src={IconClose} alt="Close lightbox" />
+                        </button>
 
-                    <button
-                        className="image-slider__arrow image-slider__arrow--right"
-                        onClick={nextImage}
-                        disabled={nextImageButtonDisabled}>
-                        <img className="image-slider__arrow-icon" src={IconNext} alt="Next image" />
-                    </button>
+                        <button
+                            className="image-slider__arrow image-slider__arrow--left"
+                            onClick={previousImage}
+                            disabled={previousImageButtonDisabled}>
+                            <img className="image-slider__arrow-icon" src={IconPrevious} alt="Previous image" />
+                        </button>
+
+                        <button
+                            className="image-slider__arrow image-slider__arrow--right"
+                            onClick={nextImage}
+                            disabled={nextImageButtonDisabled}>
+                            <img className="image-slider__arrow-icon" src={IconNext} alt="Next image" />
+                        </button>
+
+                        <div className="image-slider__image-container" onClick={openLightbox}>
+                            {images.map((image, i) => (
+                                <img
+                                    className="image-slider__img"
+                                    style={{ translate: (activeImage * (-100)) + "%" }}
+                                    src={image.imageURL}
+                                    alt="Article image" />
+                            ))}
+                        </div>
+                    </div>
+
+                    <div className="image-slider__thumbnails"
+                        style={{ display: ((images.length === 1) ? "none" : "") }} >
+                        {images.map((image, i) => (
+                            <div className="image-slider__thumbnail-container">
+                                <img className={"image-slider__thumbnail " + (activeImage === i ? "image-slider__thumbnail--active" : "")}
+                                    onClick={(e) => (changeActiveImage(e, i))}
+                                    src={image.thumbnail}
+                                    alt="Thumbnail" />
+                            </div>
+                        ))}
+                    </div>
+
                 </div>
-
-                <div className="image-slider__thumbnails">
-                    {images.map((image, i) => (
-                        <img className={"image-slider__thumbnail " + (activeImage === i ? "image-slider__thumbnail--active" : "")}
-                            onClick={() => (setActiveImage(i))}
-                            src={image.thumbnail}
-                            alt="Thumbnail" />
-                    ))}
-                </div>
-
             </div>
         </>
     )
