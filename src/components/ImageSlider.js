@@ -4,6 +4,7 @@ import IconNext from '../img/icon-next.svg';
 
 function ImageSlider({ images }) {
     const articleImages = useRef([]);
+    const [activeImage, setActiveImage] = useState(0);
     const [nextImageButtonDisabled, setNextImageButtonDisabled] = useState(true);
     const [previousImageButtonDisabled, setPreviousImageButtonDisabled] = useState(true);
 
@@ -31,6 +32,8 @@ function ImageSlider({ images }) {
     }
 
     function previousImage() {
+        //setActiveImage((prevActiveImage) => (prevActiveImage - 1));
+        
         articleImages.current.map((image) => {
             const imageTranslateProp = parseFloat(image.style.translate) || 0;
             image.style.translate = (imageTranslateProp + 100) + "%"
@@ -56,6 +59,7 @@ function ImageSlider({ images }) {
                                 articleImages.current[i] = element
                             )}
                             className="image-slider__img"
+                            style={{translate: (activeImage * (-100)) + "%"}}
                             src={image.imageURL}
                             alt="Article image" />
                     ))}
@@ -76,8 +80,9 @@ function ImageSlider({ images }) {
                 </div>
 
                 <div className="image-slider__thumbnails">
-                    {images.map((image) => (
-                        <img className="image-slider__thumbnail"
+                    {images.map((image, i) => (
+                        <img className={"image-slider__thumbnail " + (activeImage === i ? "image-slider__thumbnail--active" : "")}
+                            onClick={() => (setActiveImage(i))}
                             src={image.thumbnail}
                             alt="Thumbnail" />
                     ))}

@@ -39,7 +39,7 @@ function Navbar() {
                     </ul>
                 </div>
 
-                <button className="navbar__cart_btn" onClick={toggleCartOpen} >
+                <button className="navbar__cart_btn" onClick={toggleCartOpen}>
                     <img src={IconCart} alt="Cart" />
                     <div className={"navbar__cart_badge " + ((totalCartItems() < 1) ? "navbar__cart_badge--hidden" : "")}>{totalCartItems()}</div>
                 </button>
