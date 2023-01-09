@@ -605,6 +605,7 @@ body {
         border-radius: 0.7rem;
 
         @media screen and (min-width: 768px) {
+            padding-inline: 0.65rem;
             width: 35%;
         }
 
@@ -623,7 +624,7 @@ body {
         }
 
         @media screen and (min-width: 768px) {
-            padding: 0 0.65rem;
+            padding: 0;
         }
     }
 
@@ -635,7 +636,7 @@ body {
         text-align: center;
 
         @media screen and (min-width: 768px) {
-            padding: 0.65rem;
+            padding: 0rem;
         }
     }
 
