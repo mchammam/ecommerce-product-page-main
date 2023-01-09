@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import ArticleItem from './ArticleItem';
+import articles from '../data/articles.json';
 
 export interface ArticleImage {
   _id: string;
@@ -18,7 +19,7 @@ export interface Article {
 }
 
 function Articles() {
-  const [articleItems, setArticleItems] = useState<Article[]>([]);
+  /* const [articleItems, setArticleItems] = useState<Article[]>([]);
   useEffect(() => {
     fetch('http://127.0.0.1:2000/articles/637d05b707c7f39f71f3bc42')
       .then((res) => {
@@ -29,7 +30,9 @@ function Articles() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, []); */
+
+  const articleItems = articles;
 
   return (
     <>
