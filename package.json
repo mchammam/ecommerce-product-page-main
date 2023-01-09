@@ -2,12 +2,15 @@
   "name": "ecommerce-product-page-main",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://mchammam.github.io/ecommerce-product-page-main/",
   "type": "module",
   "main": "index.html",
   "scripts": {
     "dev": "vite --host",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "react": "^18.2.0",

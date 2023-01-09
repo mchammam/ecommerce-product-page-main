@@ -33,34 +33,44 @@ function Navbar() {
             <img src={IconClose} alt="Close" />
           </button>
           <ul className="menu__list">
-            <a href="#" className="menu__link">
-              <li className="menu__item">Collections</li>
-            </a>
-            <a href="#" className="menu__link">
-              <li className="menu__item">Men</li>
-            </a>
-            <a href="#" className="menu__link">
-              <li className="menu__item">Women</li>
-            </a>
-            <a href="#" className="menu__link">
-              <li className="menu__item">About</li>
-            </a>
-            <a href="#" className="menu__link">
-              <li className="menu__item">Contact</li>
-            </a>
+            <li className="menu__item">
+              <a href="#" className="menu__link">
+                Collections
+              </a>
+            </li>
+            <li className="menu__item">
+              <a href="#" className="menu__link">
+                Men
+              </a>
+            </li>
+            <li className="menu__item">
+              <a href="#" className="menu__link">
+                Women
+              </a>
+            </li>
+            <li className="menu__item">
+              <a href="#" className="menu__link">
+                About
+              </a>
+            </li>
+            <li className="menu__item">
+              <a href="#" className="menu__link">
+                Contact
+              </a>
+            </li>
           </ul>
         </div>
 
         <button className="navbar__cart_btn" onClick={toggleCartOpen}>
           <img src={IconCart} alt="Cart" />
-          <div
+          <span
             className={
               'navbar__cart_badge ' +
               (totalCartItems() < 1 ? 'navbar__cart_badge--hidden' : '')
             }
           >
             {totalCartItems()}
-          </div>
+          </span>
         </button>
 
         <img src={ImgAvatar} className="navbar__avatar" alt="Avatar image" />
