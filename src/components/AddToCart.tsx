@@ -1,12 +1,13 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useId } from 'react';
 import { CartContext } from '../context/CartContext';
 import IconPlus from '../img/icon-plus.svg';
 import IconMinus from '../img/icon-minus.svg';
 import { Article } from './Articles';
 
-function AddToCart({ articleData }: {articleData: Article}) {
-  const { addToCart } = useContext(CartContext) ;
+function AddToCart({ articleData }: { articleData: Article }) {
+  const { addToCart } = useContext(CartContext);
   const [quantity, setQuantity] = useState(1);
+  const quantityInputId = useId();
 
   const item = {
     id: articleData._id,
@@ -26,9 +27,14 @@ function AddToCart({ articleData }: {articleData: Article}) {
           >
             <img src={IconMinus} alt="Minus icon" />
           </button>
+          <label htmlFor={quantityInputId} className="visually-hidden">
+            Quantity
+          </label>
           <input
             className="add-to-cart__input"
             type="number"
+            id={quantityInputId}
+            onChange={(e) => setQuantity(parseInt(e.target.value))}
             value={quantity}
           />
           <button

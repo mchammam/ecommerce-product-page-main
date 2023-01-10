@@ -408,7 +408,7 @@ body {
     &__btn-container {
         position: relative;
         max-height: 19rem;
-        
+
         @media screen and (min-width: 768px) {
             max-height: unset;
         }
@@ -534,7 +534,7 @@ body {
 }
 
 @media screen and (min-width: 768px) {
-    .lightbox {        
+    .lightbox {
         position: fixed;
         z-index: 999;
         top: 0;
@@ -549,7 +549,6 @@ body {
 
         & .image-slider {
             &__btn-container {
-                
             }
 
             &__image-container {
@@ -671,4 +670,19 @@ body {
         margin-right: 1rem;
         fill: hsl(223, 64%, 98%);
     }
+}
+
+/* utility classes */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
 }

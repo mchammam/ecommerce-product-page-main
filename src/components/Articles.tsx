@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import ArticleItem from './ArticleItem';
 import articles from '../data/articles.json';
 
